@@ -3,6 +3,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Global ScrollTrigger Optimization: Normalize scroll on touch and ignore resize jumps
+if (ScrollTrigger.isTouch === 1) {
+    ScrollTrigger.normalizeScroll(true);
+}
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 // Helper to split text into interactive spans (chars/words)
 function splitText(element, type = 'char') {
     if (!element) return [];
@@ -212,13 +218,14 @@ function initAboutAnimations(visualizer) {
                 pin: true,
                 start: "top top",
                 end: () => "+=" + window.innerHeight,
-                scrub: 1,
+                scrub: 0.5, // Reduced from 1 for tighter tracking on touch
                 invalidateOnRefresh: true,
                 anticipatePin: 1,
                 snap: {
                     snapTo: 1,
-                    duration: 0.6,
-                    ease: "power2.inOut"
+                    duration: { min: 0.2, max: 0.5 }, // Faster snapping
+                    delay: 0, // Snap instantly when scroll stops
+                    ease: "power2.out"
                 },
                 onUpdate: (self) => {
                     // Trigger glitch and theme swap at 50% scroll

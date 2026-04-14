@@ -443,14 +443,14 @@ section {
   }
 
   .about-container {
-    padding: 0 5%;
-    gap: 10vw;
+    padding: 0 7.5vw; /* Perfectly centers 85vw card (100-85)/2 */
+    gap: 15vw; /* Gap to make the offset exactly 100vw (85+15) */
     justify-content: flex-start;
     align-items: center;
-    width: 200%; /* Enough to fit two cards side-by-side but wider */
+    width: 200%; 
     flex-wrap: nowrap;
     will-change: transform;
-    perspective: 1000px; /* Enable 3D depth for cards */
+    perspective: 1000px; 
   }
 
   .dj-card {
