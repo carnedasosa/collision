@@ -23,7 +23,13 @@ export class Visualizer {
 
     init() {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        
+        // Optimization: Lower DPR on mobile to save GPU (44% fewer pixels than 2x)
+        const dpr = window.devicePixelRatio;
+        const isMob = window.innerWidth <= 768;
+        const optimalDPR = isMob ? Math.min(dpr, 1.5) : Math.min(dpr, 2);
+        this.renderer.setPixelRatio(optimalDPR);
+        
         this.container.appendChild(this.renderer.domElement);
 
         this.camera.position.z = 5;
@@ -41,7 +47,10 @@ export class Visualizer {
         this.scene.add(purpleLight);
 
         // Central Geometry
-        this.geometry = new THREE.IcosahedronGeometry(1.5, 4);
+        // Central Geometry - Drastically reduced detail on mobile (80 vs 5120 triangles)
+        const isMobile = window.innerWidth <= 768;
+        const geoDetail = isMobile ? 1 : 4;
+        this.geometry = new THREE.IcosahedronGeometry(1.5, geoDetail);
         this.material = new THREE.MeshPhongMaterial({
             color: 0x000000,
             wireframe: true,
@@ -64,6 +73,13 @@ export class Visualizer {
         this.initParticles();
 
         window.addEventListener('resize', () => this.onWindowResize());
+
+        // Visibility Observer - Pause rendering when not in view to save CPU/Battery
+        this._isVisible = true;
+        const observer = new IntersectionObserver((entries) => {
+            this._isVisible = entries[0].isIntersecting;
+        }, { threshold: 0.05 });
+        observer.observe(this.container);
     }
 
     initParticles() {
@@ -160,6 +176,15 @@ export class Visualizer {
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Re-initialize particles to maintain density on orientation change
+            if (this.particles) {
+                this.scene.remove(this.particles);
+                this.particles.geometry.dispose();
+                this.particles.material.dispose();
+            }
+            this.initParticles();
+            
             this.updateMobileScales();
         } else {
             // Even if just height changed, we update camera aspect but skip renderer.setSize
@@ -194,7 +219,54 @@ export class Visualizer {
         }
     }
 
+    // Advanced: Trigger a tech-glitch effect (color shift + scale jitter)
+    triggerGlitch() {
+        if (!this.mesh) return;
+        
+        const originalColor = this.material.emissive.clone();
+        const glitchColor = originalColor.getHex() === 0x00f5ff ? new THREE.Color(0xbf5fff) : new THREE.Color(0x00f5ff);
+        
+        const tl = gsap.timeline();
+        
+        // Flash color and intensity
+        tl.to(this.material.emissive, { 
+            r: glitchColor.r, g: glitchColor.g, b: glitchColor.b, 
+            duration: 0.05, 
+            repeat: 3, 
+            yoyo: true 
+        });
+        
+        tl.to(this.material, { 
+            emissiveIntensity: 2, 
+            duration: 0.1, 
+            repeat: 1, 
+            yoyo: true 
+        }, 0);
+
+        // Jitter rotation
+        tl.to(this.mesh.rotation, {
+            x: "+=0.5",
+            y: "+=0.5",
+            duration: 0.1,
+            ease: "expo.out"
+        }, 0);
+    }
+
+    // Set the core theme color (0 for Cyan, 1 for Purple)
+    setTheme(index) {
+        const color = index === 0 ? 0x00f5ff : 0xbf5fff;
+        gsap.to(this.material.emissive, {
+            r: new THREE.Color(color).r,
+            g: new THREE.Color(color).g,
+            b: new THREE.Color(color).b,
+            duration: 0.8,
+            ease: "power2.inOut"
+        });
+    }
+
     update(audioData) {
+        if (!this._isVisible) return; // Skip work if canvas is off-screen
+
         // Base Rotation
         this.mesh.rotation.y += 0.005;
         this.mesh.rotation.x += 0.003;
@@ -207,18 +279,27 @@ export class Visualizer {
         // Audio Reactivity
         if (audioData) {
             const average = audioData.reduce((a, b) => a + b) / audioData.length;
-            const isMobile = window.innerWidth <= 768;
-            const mobileFactor = isMobile ? 0.55 : 1.0;
             
-            // Only the ball (mesh) pulses now, relative to its base mobile scale
-            const pulseScale = mobileFactor * (1 + (average / 256) * 1.5);
-            this.mesh.scale.set(pulseScale, pulseScale, pulseScale);
+            // Fix: Use an additive pulse instead of absolute set() to avoid GSAP conflict
+            // max pulse +30% on top of base mobile/desktop scale
+            const pulse = 1 + (average / 256) * 1.3; 
+            
+            // quickSetter style transition for smoothness
+            if (!this._qScaleX) {
+                this._qScaleX = gsap.quickTo(this.mesh.scale, "x", { duration: 0.1 });
+                this._qScaleY = gsap.quickTo(this.mesh.scale, "y", { duration: 0.1 });
+                this._qScaleZ = gsap.quickTo(this.mesh.scale, "z", { duration: 0.1 });
+            }
+
+            const isMobile = window.innerWidth <= 768;
+            const base = isMobile ? 0.55 : 1.0;
+            
+            this._qScaleX(base * pulse);
+            this._qScaleY(base * pulse);
+            this._qScaleZ(base * pulse);
 
             // Everything else stays stable as requested
             if (this.logoLoaded) {
-                // We don't touch this.logoGroup.scale here anymore!
-                // It stays at the value set during loadLogo()
-                
                 this.logoGroup.traverse((child) => {
                     if (child.isMesh) {
                         child.material.emissiveIntensity = 1.0; // Steady glow

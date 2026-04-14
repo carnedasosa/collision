@@ -55,11 +55,12 @@ h1, h2, h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  z-index: 1000; /* Increased to stay above all transformed content */
+  background: rgba(0, 0, 0, 0.25); /* Slightly darker for better contrast */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
+  transform: translateZ(0); /* Force hardware acceleration for stable backdrop-filter */
   transition: all 0.4s ease;
 }
 
@@ -103,7 +104,7 @@ h1, h2, h3 {
 
 /* Layout Parts */
 section {
-  min-height: 100vh;
+  min-height: 100dvh;
   padding: 100px 5%;
   display: flex;
   flex-direction: column;
@@ -113,7 +114,7 @@ section {
 /* Hero Section */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,6 +211,7 @@ section {
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+  touch-action: pan-y; /* Allow vertical scroll, handle horizontal in JS */
 }
 
 .covers-band:active {
@@ -434,7 +436,7 @@ section {
 
   .about {
     padding: 0; /* Reset for pinning */
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -448,6 +450,7 @@ section {
     width: 200%; /* Enough to fit two cards side-by-side but wider */
     flex-wrap: nowrap;
     will-change: transform;
+    perspective: 1000px; /* Enable 3D depth for cards */
   }
 
   .dj-card {
@@ -457,6 +460,8 @@ section {
     height: auto;
     max-height: 80vh;
     overflow-y: auto;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
   }
 
   .dj-name {
@@ -557,6 +562,8 @@ section {
 
 /* Page content animation states */
 main {
+  position: relative;
+  z-index: 10; /* Ensure content is above the -1 canvas-container */
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 

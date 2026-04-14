@@ -9,14 +9,17 @@ class App {
         this.visualizer = new Visualizer('canvas-container');
         this.audio = new AudioEngine();
         this.currentPath = window.location.pathname;
+        this.pageContext = null; // Used for GSAP scope cleanup during navigation
         
         this.init();
         this.initRouter();
     }
 
     init() {
-        // Initialize GSAP Animations
-        initAnimations();
+        // Initialize GSAP Animations using a context for easy cleanup
+        this.pageContext = gsap.context(() => {
+            initAnimations(this.visualizer);
+        });
 
         // Start Animation Loop
         this.animate();
@@ -111,9 +114,24 @@ class App {
                 // 4. Re-initialize page-specific logic
                 window.scrollTo(0, 0);
                 
+                // Cleanup old animations before starting new ones
+                if (this.pageContext) {
+                    this.pageContext.revert();
+                }
+
                 // Re-run standard animations
-                initAnimations();
+                this.pageContext = gsap.context(() => {
+                    initAnimations(this.visualizer);
+                });
                 
+                // Re-init audio if the new page has a waveform and the old instance is broken
+                if (document.querySelector('#waveform')) {
+                    if (this.audio && this.audio.wavesurfer) {
+                        this.audio.wavesurfer.destroy();
+                    }
+                    this.audio = new AudioEngine();
+                }
+
                 // If it's the booking page, run the form logic
                 if (targetPath.includes('booking.html')) {
                     initBooking();
@@ -124,6 +142,15 @@ class App {
             }
         } catch (error) {
             console.error('Navigation failed:', error);
+            
+            // Visual feedback of error before hard redirect
+            const status = this.overlay.querySelector('.loading-status');
+            if (status) {
+                status.textContent = "Sync Error. Redirecting...";
+                status.style.color = "var(--accent-purple)";
+            }
+            
+            await new Promise(resolve => setTimeout(resolve, 1500));
             window.location.href = url;
         }
 
@@ -172,7 +199,13 @@ class App {
                 }
             });
             
-            tl.to('main', { opacity: 1, scale: 1, duration: 0.5, ease: "power4.out" });
+            tl.to('main', { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 0.5, 
+                ease: "power4.out",
+                clearProps: "all" // CRITICAL: Remove inline styles to restore backdrop-filter and z-index behavior
+            });
             tl.to(this.overlay, { opacity: 0, duration: 0.4 }, "-=0.2");
             tl.to(logo, { opacity: 0, duration: 0.2, scale: 1.2 }, "-=0.4");
         });
