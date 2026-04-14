@@ -1,0 +1,5 @@
+# Netlify Redirects for SPA/MPA navigation
+/*  /index.html  200
+/index  /index.html  301
+/booking  /booking.html  200
+/techrider  /techrider.html  200

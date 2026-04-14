@@ -1,0 +1,243 @@
+.booking-page {
+    padding-top: 150px;
+}
+
+.booking-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 0 5%;
+}
+
+.booking-hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.booking-hero .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.booking-section {
+    max-width: 1000px;
+    margin: 0 auto 100px;
+    padding: 0 5%;
+}
+
+#booking-form {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    padding: 4rem;
+    border-radius: 30px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+#booking-form:focus-within {
+    border-color: rgba(0, 245, 255, 0.3);
+    box-shadow: 0 0 50px rgba(0, 245, 255, 0.05);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.form-group input, 
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    padding: 1.2rem;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 15px rgba(191, 95, 255, 0.2);
+}
+
+/* Custom placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+/* Toggles */
+.toggles-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--glass-border);
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.toggle-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--text-dim);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: .4s;
+    border-radius: 34px;
+    border: 1px solid var(--glass-border);
+}
+
+.toggle-switch label:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--text-dim);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + label {
+    background-color: rgba(0, 245, 255, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+.toggle-switch input:checked + label:before {
+    transform: translateX(30px);
+    background-color: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Footer */
+.form-footer {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.submit-btn {
+    background: var(--text-main);
+    color: var(--bg-color);
+    border: none;
+    padding: 1.5rem 4rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    background: var(--accent-cyan);
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+.form-notice {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-style: italic;
+    letter-spacing: 0.05rem;
+}
+
+/* Validation styles */
+.form-group input:invalid:not(:placeholder-shown) {
+    border-color: #ff4757;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .booking-page {
+        padding-top: 100px;
+    }
+
+    #booking-form {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+
+    .toggles-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .toggle-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}

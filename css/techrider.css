@@ -1,0 +1,226 @@
+/* Tech Rider Specific Styles */
+
+.tech-rider-page {
+    padding-top: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rider-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.rider-header h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #fff, var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rider-header .subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+/* Section Containers */
+.rider-section {
+    margin-bottom: 6rem;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.rider-section:hover {
+    border-color: var(--glass-border);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-cyan), transparent);
+    opacity: 0.3;
+}
+
+/* Gear Lists */
+.gear-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.gear-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    align-items: center;
+}
+
+.gear-item strong {
+    color: var(--accent-cyan);
+    font-family: var(--font-heading);
+}
+
+.gear-item .gear-icon {
+    font-size: 1.5rem;
+    color: var(--accent-purple);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(191, 95, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Piano Details Grid */
+.piano-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .piano-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+.piano-info-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border-left: 4px solid var(--accent-purple);
+}
+
+.piano-info-card h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--accent-purple);
+}
+
+/* Production Facts Alerts */
+.production-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.fact-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fact-card.important {
+    border-color: rgba(255, 140, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.05), transparent);
+}
+
+.fact-card .fact-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: #FF8C00;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+/* Diagram Placeholder/Recreation Style */
+.setup-diagram-container {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #050505;
+    border-radius: 20px;
+    overflow-x: auto;
+}
+
+.diagram-svg {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Connection Legend */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.legend-color {
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+/* Hospitality & Transport */
+.hospitality-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .hospitality-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.1rem;
+    border-radius: 100px;
+    margin-top: 4rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--accent-cyan);
+    color: #000;
+}

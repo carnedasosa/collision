@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH RIDER | COLLISION</title>
+    <meta name="description" content="Technical requirements and performance rider for COLLISION. Details for hybrid and DJ sets.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TECH RIDER | COLLISION">
+    <meta property="og:description" content="Technical specifications and stage requirements for Collision. Essential data for promoters and sound engineers.">
+    <meta property="og:image" content="/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="TECH RIDER | COLLISION">
+    <meta property="twitter:description" content="Technical specifications and stage requirements for Collision.">
+    <meta property="twitter:image" content="/assets/og-image.png">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/techrider.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html"><img src="/assets/WHITE.svg" alt="COLLISION Logo" class="logo-img"></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-item">back home</a>
+            <a href="booking.html" class="nav-item">info booking</a>
+            <span class="nav-item">assets</span>
+        </div>
+    </nav>
+
+    <div id="canvas-container"></div>
+
+    <main class="tech-rider-page">
+        <header class="rider-header reveal">
+            <span class="subtitle">System Requirements</span>
+            <h1>Technical Rider</h1>
+        </header>
+
+        <!-- HYBRID SET SECTION -->
+        <section class="rider-section reveal">
+            <h2 class="section-title">Hybrid Set with Piano</h2>
+            <ul class="gear-list">
+                <li class="gear-item">
+                    <div class="gear-icon">M</div>
+                    <div>
+                        <strong>Pioneer DJ DJM-V10-LF</strong>
+                        <p>Professional mixer (LF version preferred).</p>
+                    </div>
+                </li>
+                <li class="gear-item">
+                    <div class="gear-icon">C</div>
+                    <div>
+                        <strong>4 x AlphaTheta CDJ-3000X / Pioneer CDJ-3000</strong>
+                        <p>All units must be updated to the latest firmware version and run the same version.</p>
+                    </div>
+                </li>
+                <li class="gear-item">
+                    <div class="gear-icon">E</div>
+                    <div>
+                        <strong>1 x Ethernet Switch (No Wi-Fi)</strong>
+                        <p>With 5 (five) CAT5e or higher cables, connected via Pro DJ Link to the CDJs and mixer.</p>
+                    </div>
+                </li>
+                <li class="gear-item">
+                    <div class="gear-icon">R</div>
+                    <div>
+                        <strong>Pioneer DJ RMX-1000</strong>
+                        <p>Connected via &lt;&lt;Multi I/O&gt;&gt; send and return channels (with jack cables on both ends) to the DJM-V10.</p>
+                    </div>
+                </li>
+                <li class="gear-item">
+                    <div class="gear-icon">S</div>
+                    <div>
+                        <strong>2 x Stereo Booth Monitors</strong>
+                        <p>Positioned at ear level, powered separately with independent control. Preferred: Meyer Sound, L-Acoustics, d&b.</p>
+                    </div>
+                </li>
+            </ul>
+            <p style="margin-top: 2rem; color: var(--accent-purple); font-weight: bold; text-transform: uppercase; letter-spacing: 0.1rem;">
+                DJS AND PIANIST MUST BE CLEARLY VISIBLE TO THE AUDIENCE
+            </p>
+        </section>
+
+        <!-- PIANO DETAILS -->
+        <section class="rider-section reveal">
+            <h2 class="section-title">Piano Configuration</h2>
+            <div class="piano-details">
+                <div class="piano-info-card">
+                    <h3>Primary Instrument</h3>
+                    <p><strong>Yamaha P-225 Black</strong>, connected to Channel 1 of the DJM-V10 in LINE mode. Piano without furniture stand.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">Positioned next to the DJ on the left side, allowing space for simultaneous operation.</p>
+                </div>
+                <div class="piano-info-card" style="border-left-color: var(--accent-cyan);">
+                    <h3>Hardware Requirements</h3>
+                    <p><strong>Audibax Onyx Pro 1</strong> adjustable piano stand (or similar to allow for high positioning). <em>Note: Artist is 1.97m tall.</em></p>
+                    <p style="margin-top: 1rem;"><strong>Sustain Pedal:</strong> Weighted Yamaha FC4A, FC3A, or Roland DP-10 (No lightweight plastic switches).</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; font-size: 0.9rem;">
+                <strong>88-Key Alternatives:</strong> Nord Stage 4, Nord Stage 3, Kawai MP7SE, Kawai MP11SE.
+            </div>
+        </section>
+
+        <!-- SETUP DIAGRAM -->
+        <section class="rider-section reveal">
+            <h2 class="section-title">Visual Setup Explanation</h2>
+            <div class="setup-diagram-container">
+                <!-- Simple Minimalist SVG Diagram -->
+                <svg viewBox="0 0 800 450" class="diagram-svg" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="2" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+                    <!-- Mixer -->
+                    <rect x="350" y="150" width="100" height="150" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    <text x="400" y="235" text-anchor="middle" fill="#555" font-size="10" font-family="Syne">V10-LF</text>
+                    
+                    <!-- CDJs -->
+                    <rect x="230" y="160" width="80" height="120" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    <rect x="130" y="160" width="80" height="120" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    <rect x="490" y="160" width="80" height="120" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    <rect x="590" y="160" width="80" height="120" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    
+                    <!-- RMX -->
+                    <rect x="360" y="40" width="80" height="60" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    <text x="400" y="75" text-anchor="middle" fill="#555" font-size="8">RMX-1000</text>
+
+                    <!-- Piano -->
+                    <rect x="20" y="180" width="60" height="220" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+                    <text x="50" y="290" text-anchor="middle" fill="#555" font-size="10" transform="rotate(-90 50 290)">PIANO (P-225)</text>
+
+                    <!-- Connections (simplified lines matching colors in legend) -->
+                    <!-- CDJ Links -->
+                    <path d="M 210 220 H 350" stroke="#FF4D4D" stroke-width="2" fill="none" opacity="0.6"/>
+                    <path d="M 310 220 H 350" stroke="#FF4D4D" stroke-width="2" fill="none" opacity="0.6"/>
+                    <path d="M 450 220 H 490" stroke="#FF4D4D" stroke-width="2" fill="none" opacity="0.6"/>
+                    <path d="M 450 220 H 590" stroke="#FF4D4D" stroke-width="2" fill="none" opacity="0.6"/>
+                    
+                    <!-- RMX Links -->
+                    <path d="M 390 100 V 150" stroke="#4DFFFF" stroke-width="2" fill="none" opacity="0.6"/>
+                    <path d="M 410 100 V 150" stroke="#4D4DFF" stroke-width="2" fill="none" opacity="0.6"/>
+
+                    <!-- Piano Link -->
+                    <path d="M 80 290 C 200 290 200 250 350 250" stroke="#4DFF4D" stroke-width="2" fill="none" opacity="0.6"/>
+                </svg>
+
+                <div class="legend">
+                    <div class="legend-item"><div class="legend-color" style="background: #FF4D4D;"></div> RCA / Digital (CDJs)</div>
+                    <div class="legend-item"><div class="legend-color" style="background: #4DFFFF;"></div> Jack TRS IO Send (RMX)</div>
+                    <div class="legend-item"><div class="legend-color" style="background: #4D4DFF;"></div> Jack TRS IO Return (RMX)</div>
+                    <div class="legend-item"><div class="legend-color" style="background: #4DFF4D;"></div> Jack TS Channel 1 (Piano)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DJ ONLY + HOSPITALITY -->
+        <div class="hospitality-grid reveal">
+            <section class="rider-section" style="margin-bottom: 0;">
+                <h2 class="section-title">Hospitality</h2>
+                <ul class="gear-list">
+                    <li>• Still Water</li>
+                    <li>• One bottle of Hendricks Gin + Tonic Water</li>
+                    <li style="margin-top: 1rem;"><strong>Transport:</strong> Comfortable and spacious car.</li>
+                </ul>
+            </section>
+            <section class="rider-section" style="margin-bottom: 0;">
+                <h2 class="section-title">Production</h2>
+                <div class="production-facts">
+                    <div class="fact-card">
+                        <span class="fact-label">Space</span>
+                        <p>7 m² minimum required (to play comfortably).</p>
+                    </div>
+                    <div class="fact-card important">
+                        <span class="fact-label">Lighting</span>
+                        <p>Warm colors only (Yellow, Red, Orange, Warm White). Instrument & Pianist must be illuminated.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="rider-section reveal" style="margin-top: 2rem;">
+            <p><strong>Atmosphere:</strong> Fog behind the DJ is important. No sound or light equipment under the DJ table. A sound technician must be available throughout the exhibition.</p>
+        </section>
+
+        <div style="text-align: center; padding-bottom: 5rem;">
+            <a href="index.html" class="back-btn">GO HOME</a>
+        </div>
+    </main>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

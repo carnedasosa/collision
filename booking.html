@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKING | COLLISION</title>
+    <meta name="description" content="Booking inquiry form for COLLISION. Provide event details for performance requests.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BOOKING | COLLISION">
+    <meta property="og:description" content="Secure your date for the ritual. Official booking inquiry for Collision.">
+    <meta property="og:image" content="/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="BOOKING | COLLISION">
+    <meta property="twitter:description" content="Official booking inquiry for Collision.">
+    <meta property="twitter:image" content="/assets/og-image.png">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/booking.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html"><img src="/assets/WHITE.svg" alt="COLLISION Logo" class="logo-img"></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-item">back home</a>
+            <span class="nav-item">assets</span>
+            <a href="techrider.html" class="nav-item">tech rider</a>
+        </div>
+    </nav>
+
+    <div id="canvas-container"></div>
+
+    <main class="booking-page">
+        <section class="booking-hero">
+            <h1 class="reveal">Fill out the form</h1>
+            <p class="reveal subtitle">Provide the details of your ritual. We will review and respond via the void.</p>
+        </section>
+
+        <section class="booking-section">
+            <form id="booking-form" class="reveal">
+                <!-- Row 1: Primary Info -->
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Primary contact email for booking communication" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event_name">Event Name</label>
+                        <input type="text" id="event_name" name="event_name" placeholder="Official name of the event" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="text" id="date" name="date" placeholder="Proposed event date (DD/MM/YYYY)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="venue">Venue</label>
+                        <input type="text" id="venue" name="venue" placeholder="Venue name, city, and country" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="promoter">Promoter</label>
+                        <input type="text" id="promoter" name="promoter" placeholder="Promoter / company responsible">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capacity">Capacity</label>
+                        <input type="text" id="capacity" name="capacity" placeholder="Floor capacity and total PAX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="social_links">Social Links</label>
+                        <input type="text" id="social_links" name="social_links" placeholder="Event/Venue social links (FB/RA/IG)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event_hours">Event Hours</label>
+                        <input type="text" id="event_hours" name="event_hours" placeholder="Full schedule (doors open – closing time)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="set_time">Set Time / Running Order</label>
+                        <input type="text" id="set_time" name="set_time" placeholder="Proposed slot and lineup order">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticket_price">Ticket Price</label>
+                        <input type="text" id="ticket_price" name="ticket_price" placeholder="Pre-sale and door price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcement_date">Announcement Date</label>
+                        <input type="text" id="announcement_date" name="announcement_date" placeholder="Target announcement date">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="radius_clause">Exclusivity / Radius Clause</label>
+                        <textarea id="radius_clause" name="radius_clause" rows="2" placeholder="Specify any radius restrictions (distance + time frame)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="artist_billing">Artist Billing</label>
+                        <input type="text" id="artist_billing" name="artist_billing" placeholder="Headline / Co-headline / A–Z / Support?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vip_tables">VIP Tables</label>
+                        <input type="text" id="vip_tables" name="vip_tables" placeholder="Number of VIP tables available (if applicable)">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="past_bookings">Past Bookings at this venue</label>
+                        <textarea id="past_bookings" name="past_bookings" rows="2" placeholder="Recent artists who have performed at this venue"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fee">Artist Fee (Net)</label>
+                        <input type="text" id="fee" name="fee" placeholder="Proposed fee and currency (€, £, $)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="offer_deadline">Offer Deadline</label>
+                        <input type="text" id="offer_deadline" name="offer_deadline" placeholder="Deadline for confirming this offer">
+                    </div>
+                </div>
+
+                <div class="toggles-container">
+                    <div class="toggle-group">
+                        <span class="toggle-label">Travel Contribution</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="travel" name="travel">
+                            <label for="travel"></label>
+                        </div>
+                    </div>
+
+                    <div class="toggle-group">
+                        <span class="toggle-label">Hotel</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="hotel" name="hotel">
+                            <label for="hotel"></label>
+                        </div>
+                    </div>
+
+                    <div class="toggle-group">
+                        <span class="toggle-label">Ground Transport</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="transport" name="transport">
+                            <label for="transport"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">SEND REQUEST</button>
+                    <p class="form-notice">All submissions are subject to confirmation. The sound of the void awaits.</p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/booking.js"></script>
+</body>
+</html>

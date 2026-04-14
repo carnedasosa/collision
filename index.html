@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLLISION | Underground Techno & House Duo</title>
+    <meta name="description" content="Official website of Collision. Experience the sound of the void with the techno/house duo defining the underground scene.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="COLLISION | Underground Techno & House Duo">
+    <meta property="og:description" content="Experience the sound of the void with Collision. Underground techno and house duo defining the cosmic soundscape.">
+    <meta property="og:image" content="/assets/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="COLLISION | Underground Techno & House Duo">
+    <meta property="twitter:description" content="Experience the sound of the void with Collision.">
+    <meta property="twitter:image" content="/assets/og-image.png">
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html"><img src="/assets/WHITE.svg" alt="COLLISION Logo" class="logo-img"></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="booking.html" class="nav-item">info booking</a>
+            <span class="nav-item">assets</span>
+            <a href="techrider.html" class="nav-item">tech rider</a>
+        </div>
+    </nav>
+
+    <div id="canvas-container"></div>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="hero-subtitle">The Sound of the Void</span>
+                <h1 id="duo-name">COLLISION</h1>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-container">
+                <div class="dj-card" id="dj-davide">
+                    <div class="dj-img-wrapper">
+                        <img src="/assets/img/dj1.png" alt="Davide - Collision" class="dj-photo dj-photo-left">
+                    </div>
+                    <div class="dj-info">
+                        <h2 class="dj-name">Davide</h2>
+                        <span class="dj-role">Synth & Atmosphere</span>
+                        <p class="dj-bio">Master of cosmic frequencies and deep synthesis. Davide builds the ethereal layers that define the Collision sound, merging analog warmth with industrial precision.</p>
+                    </div>
+                </div>
+
+                <div class="dj-card" id="dj-luca">
+                    <div class="dj-img-wrapper">
+                        <img src="/assets/img/dj2.png" alt="Luca - Collision" class="dj-photo dj-photo-right">
+                    </div>
+                    <div class="dj-info">
+                        <h2 class="dj-name">Luca</h2>
+                        <span class="dj-role">Groove & Pulse</span>
+                        <p class="dj-bio">The rhythmic heart of the project. Luca drives the binary pulse that keeps the floor moving, crafting complex techno structures designed for total immersion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tracks" id="music">
+            <h2 class="reveal">Pulse Stream</h2>
+            <div class="player-container reveal">
+                <h3>Latest Mix: Descent into Cyan</h3>
+                <div id="waveform"></div>
+                <div class="controls">
+                    <button id="playPause" class="btn-play">PLAY</button>
+                    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="events" id="tour">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 2rem;">Selected Performances</h2>
+            <div class="covers-band reveal">
+                <div class="covers-stream">
+                    <!-- Item 1 -->
+                    <div class="cover-item item-even">
+                        <img src="/assets/img/event1.jpg" alt="GROUND CLUB" class="cover-image-real">
+                        <div class="cover-info">
+                            <h3>GROUND CLUB</h3>
+                            <p>LULA CLUB</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="cover-item item-odd">
+                        <img src="/assets/img/event2.jpg" alt="LA JUANITA" class="cover-image-real">
+                        <div class="cover-info">
+                            <h3>LA JUANITA</h3>
+                            <p>FLORIDA PARK MADRID</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="cover-item item-even">
+                        <img src="/assets/img/event3.jpg" alt="SUMMERIANS" class="cover-image-real">
+                        <div class="cover-info">
+                            <h3>SUMMERIANS</h3>
+                            <p>LULA CLUB</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="cover-item item-odd">
+                        <img src="/assets/img/event4.jpg" alt="JOLIE WITH LIVA K" class="cover-image-real">
+                        <div class="cover-info">
+                            <h3>JOLIE WITH LIVA K</h3>
+                            <p>LULA CLUB</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="cover-item item-even">
+                        <img src="/assets/img/event5.jpg" alt="OPEN AIR FESTIVAL" class="cover-image-real">
+                        <div class="cover-info">
+                            <h3>OPEN AIR FESTIVAL</h3>
+                            <p>AUTOCINE MADRID</p>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="cover-item item-odd">
+                        <img src="/assets/img/event6.jpg" alt="FORGET THE CLUB FESTIVAL" class="cover-image-real">
+                        <div class="cover-info">
+                            <h3>FORGET THE CLUB FESTIVAL</h3>
+                            <p>AUTOCINE MADRID</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="join">
+            <h2 class="reveal">Connect</h2>
+            <p class="reveal">Join the void. For bookings and inquiries:</p>
+            <a href="mailto:void@collision.com" class="reveal" style="color: var(--accent-purple); font-size: 1.5rem; text-decoration: none; margin-top: 2rem; display: block;">void@collision.com</a>
+        </section>
+    </main>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>
